@@ -34,26 +34,58 @@ img{ display:block; max-width:100%; }
 /* =========================
    Cabecera / Navegación
 ========================= */
+/* ====== HEADER: arreglos responsive sin cambiar HTML ====== */
+
+/* 0) Asegura que el header pueda crecer a 2 filas y no recorte contenido */
 .site-header{
-  position: sticky;
-  top: 0;                       /* pegada arriba del todo */
-  z-index: 1000;
-  height: var(--header-h);
-  background: linear-gradient(to right, var(--brand), #66bb6a);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  position: sticky; top: 0; z-index: 1000;
+  overflow: visible;                 /* <- evita recortes de la 2ª fila */
 }
 .header-container{
-  height: 100%;
-  max-width: var(--container);
-  margin-inline: auto;
-  display: flex;
-  align-items: center;
-  flex-wrap:wrap;           /* permite 2 filas */
-  justify-content: space-between;
-  padding: 0 14px;              /* sin márgenes extra arriba/abajo */
+  display: flex; align-items: center; justify-content: space-between;
   gap: .5rem;
+  min-height: initial;               /* <- que la altura NO sea fija */
+  padding-block: .45rem;             /* respiración */
 }
+
+/* 1) Desktop: sin cambios relevantes… (tus reglas actuales aplican) */
+
+/* 2) Tablet/móvil: 2 filas limpias (marca arriba, menú centrado abajo) */
+@media (max-width: 960px){
+  .header-container{ flex-wrap: wrap; }
+  .brand{
+    flex: 1 1 100%;
+    min-width: 0;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .brand-logo{ width: 32px; height: 32px; object-fit: cover; border-radius: 6px; }
+  .brand-name{ font-size: clamp(16px, 2.4vw, 20px); line-height: 1.1; }
+
+  .nav{
+    flex: 1 1 100%;
+    display: flex; justify-content: center; align-items: center;
+    gap: 1rem;
+    padding: .35rem 0 .5rem;
+  }
+  .nav a{
+    display: inline-block;           /* estabilidad de caja */
+    white-space: nowrap;             /* evita cortes raros de palabras */
+    font-size: 16px; font-weight: 700;
+    color: #fff; text-decoration: none;
+  }
+}
+
+/* 3) Teléfonos estrechos: compacta tamaño y gaps para que TODO quepa */
+@media (max-width: 420px){
+  .brand-logo{ width: 28px; height: 28px; }
+  .brand-name{ font-size: 16px; }
+  .nav{ gap: .6rem; }
+  .nav a{ font-size: 15px; padding: .2rem .1rem; }
+}
+
+/* 4) Cuando el header tiene 2 filas, compensa el ancla de las secciones */
+#inicio, #productos, #sobre { scroll-margin-top: 120px; } /* header de 2 filas */
+
 .brand{
   display: flex;
   align-items: center;
@@ -557,12 +589,3 @@ a:focus-visible, .btn:focus-visible { outline:2px solid #2e7d32; outline-offset:
 }
 .hero__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .hero__overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35)); pointer-events:none; }
-
-/* Si no hay vídeo (fallback), usa el poster como fondo */
-.hero--contact.no-video{
-  background: url('img/hero-poster.jpg') center/cover no-repeat;
-}
-.hero__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.hero__overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35)); pointer-events:none; }
-
-
