@@ -229,3 +229,43 @@
     init();
   }
 })();
+
+// --- Menú móvil accesible ---
+function initMobileNav(){
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (!header || !toggle || !nav) return;
+
+  const close = () => {
+    header.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menú');
+  };
+  const open = () => {
+    header.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Cerrar menú');
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = header.classList.contains('is-open');
+    isOpen ? close() : open();
+  });
+
+  // Cierra al navegar por un enlace o pulsar Escape
+  nav.addEventListener('click', (e) => {
+    if (e.target.closest('a')) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+}
+
+// Llama a la init en tu función init()
+/* ... */
+function init(){
+  /* lo que ya tienes ... */
+  initMobileNav();
+  /* ... */
+}
