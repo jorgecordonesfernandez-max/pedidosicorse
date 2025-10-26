@@ -77,47 +77,56 @@
    *    - respeta reduced-motion
    *    - pausa fuera de viewport
    * --------------------------- */
-  function initHeroVideo() {
-    const video = $('.hero__video');
-    if (!video) return;
+ function initHeroVideo() {
+  const section = document.querySelector('.hero--contact');
+  const video   = document.querySelector('.hero__video');
+  if (!section || !video) return;
 
-    // Asegura atributos clave por si hubiese cambios en HTML
-    video.muted = true;
-    video.setAttribute('playsinline', '');
-    if (!video.hasAttribute('preload')) video.setAttribute('preload', 'metadata');
+  // Requisitos para autoplay en iOS
+  video.muted = true;
+  video.setAttribute('playsinline', '');
+  if (!video.hasAttribute('preload')) video.setAttribute('preload', 'metadata');
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const safePlay = () => {
-      const p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {/* silenciar autoplay bloqueado */});
-    };
-
-    if (prefersReducedMotion) {
-      // usuarios que prefieren menos movimiento: deja poster y no reproduzcas
-      video.removeAttribute('autoplay');
-      video.removeAttribute('loop');
-      try { video.pause(); } catch {}
-      return;
-    }
-
-    // Reproducir sólo cuando es visible
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            safePlay();
-          } else {
-            try { video.pause(); } catch {}
-          }
-        }
-      }, { root: null, threshold: 0.25 });
-      io.observe(video);
-    } else {
-      // Fallback si no hay IO
-      safePlay();
-    }
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Si el usuario prefiere menos movimiento, no uses vídeo.
+  if (prefersReduced) {
+    section.classList.add('no-video');
+    try { video.pause(); } catch {}
+    return;
   }
+
+  // Intento de reproducción
+  const tryPlay = () => {
+    const p = video.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => {
+        // iOS/Safari ha bloqueado autoplay → usa poster como fondo, oculta el video
+        section.classList.add('no-video');
+        try { video.pause(); } catch {}
+      });
+    }
+  };
+
+  // iOS puede bloquear al cargar: reintenta tras el primer toque
+  const onFirstUserInteraction = () => {
+    tryPlay();
+    window.removeEventListener('touchstart', onFirstUserInteraction, { passive: true });
+    window.removeEventListener('click', onFirstUserInteraction, true);
+  };
+
+  // Si el navegador lo permite, reproduce
+  tryPlay();
+
+  // Reintento en iOS al primer toque
+  window.addEventListener('touchstart', onFirstUserInteraction, { passive: true });
+  window.addEventListener('click', onFirstUserInteraction, true);
+
+  // Si el documento se oculta y vuelve, reintenta
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && !section.classList.contains('no-video')) tryPlay();
+  });
+}
+
 
   /* ---------------------------
    * 5) Securización de enlaces
@@ -269,3 +278,4 @@ function init(){
   initMobileNav();
   /* ... */
 }
+
