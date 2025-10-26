@@ -2,367 +2,191 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda de Aceites</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aceites Icorse Sierra — Tienda online</title>
 
+  <!-- Tipografía profesional -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tus estilos principales -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Overrides mínimos necesarios para el ancla y scroll suave -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Ajusta si tu header es más alto/bajo */
+    #productos {
+      scroll-margin-top: 84px;
+    }
+  </style>
+</head>
 
 <body>
 
-<!-- Banner de Cookies -->
-<div id="cookie-banner">
-  <p>🍪 Esta web utiliza cookies para mejorar la experiencia del usuario. 
-     Al continuar navegando aceptas nuestra <a href="#">política de privacidad</a>.</p>
-  <button id="accept-cookies">Aceptar</button>
-</div>
-
-<!-- Modal de Aviso Legal -->
-<div id="modal-legal" class="modal">
-  <div class="modal-content">
-    <span class="close-legal">&times;</span>
-    <h2>Aviso Legal y Política de Cookies</h2>
-    <p>Usamos cookies propias para mejorar la experiencia del usuario. No se comparten datos con terceros.</p>
-    <p>Esta web cumple con la Ley de Servicios de la Sociedad de la Información (LSSI) y el RGPD.</p>
-    <p>Contacto: pedidos@aceitenatural.com</p>
+  <!-- Banner de Cookies -->
+  <div id="cookie-banner" style="display:none">
+    <p>🍪 Esta web utiliza cookies para mejorar la experiencia del usuario.
+      Al continuar navegando aceptas nuestra <a href="#" rel="nofollow noopener">política de privacidad</a>.
+    </p>
+    <button id="accept-cookies">Aceptar</button>
   </div>
-</div>
 
+  <!-- Modal de Aviso Legal -->
+  <div id="modal-legal" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close-legal" role="button" aria-label="Cerrar aviso legal">&times;</span>
+      <h2>Aviso Legal y Política de Cookies</h2>
+      <p>Usamos cookies propias para mejorar la experiencia del usuario. No se comparten datos con terceros.</p>
+      <p>Esta web cumple con la LSSI y el RGPD.</p>
+      <p>Contacto: pedidos@aceitenatural.com</p>
+    </div>
+  </div>
 
-  <header>
-    <h1>Aceites Icorse Sierra. Tienda de aceites online</h1>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="informacion.html">Informacion</a>
-
-    </nav>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="brand">
+        <img src="img/olivar.jpg" alt="Logo Aceites Icorse Sierra" class="brand-logo" />
+        <span class="brand-name">Aceites Icorse Sierra</span>
+      </div>
+      <nav class="nav" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="productos">
-      <h2>Nuestros Aceites</h2>
-      <div class="contenedor-productos">
+    <!-- HERO -->
+    <!-- Hero -->
+    <section class="hero">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg"
+        aria-hidden="true">
+        <source src="media/hero.webm" type="video/webm" />
+        <source src="media/olivar.mp4" type="video/mp4" />
+      </video>
 
-        <article class="producto">
-          <div class="carta">
-            <div class="cara frente">
-              <img src="img/oliva.jpg" alt="Aceite de Oliva Virgen Extra 2,5L" />
-              <h3>Aceite de Oliva Virgen Extra 2L</h3>
-              <p>Es el aceite de mayor calidad, extraído en frío solo por medios mecánicos. Tiene un sabor y aroma
-                intensos.</p>
-            </div>
-            <div class="cara trasera">
-              <img src="img/garrafa2.jpg" alt="Aceite de Oliva Virgen Extra 2litros" />
-              <button class="zoom-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                  <path
-                    d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z" />
-                </svg>
-              </button>
 
-              <p><strong>Precio unidad:</strong> 13 euros </p>
-              <p>Precio por garrafa de 2 Litros. Cajas de 8 garrafas.</p>
-            </div>
-          </div>
-        </article>
+      <!-- Capa de contraste (no sustituye tu fondo ni tu paleta, solo oscurece un poco) -->
+      <div class="hero__overlay" aria-hidden="true"></div>
 
-        <article class="producto">
-          <div class="carta">
-            <div class="cara frente">
-              <img src="img/girasol.jpg" alt="Aceite de Oliva Virgen Extra 5 Litros" />
-              <h3>Aceite de Oliva Virgen Extra 5L</h3>
-              <p>Perfecto por su aroma e intensidad para ensaladas. Eleva guisos, carnes y pescados, aportando un sabor
-                único y auténtico.
-                .</p>
-            </div>
-            <div class="cara trasera">
-              <img src="img/garrafa3.jpg" alt="Aceite de Oliva Virgen Extra 5 Litros" />
-              <button class="zoom-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                  <path
-                    d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z" />
-                </svg>
-              </button>
-              <p><strong>Precio unidad:</strong> 31 euros</p>
-              <p>Precio por garrafa de 5 Litros. Cajas de 3 Garrafas .</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="producto">
-          <div class="carta">
-            <div class="cara frente">
-              <img src="img/carro.png" alt="Aceite de Orujo" />
-              <h3>Realiza tu pedido</h3>
-              <p>Puedes realizar tu pedido de manera rapida y en menos de 24 horas. Tendrás el producto en casa.</p>
-            </div>
-            <div class="cara trasera">
-              <img src="img/carro.png" alt="Aceite de Girasol" />
-              <p><strong>Envios</strong> Gratuitos, sin coste adicional</p>
-              <p>Puedes pulsar aquí para realizar tu pedido.</p>
-
-              <!-- Botón que redirige -->
-              <a href="contacto.html" class="pedido-btn">Realiza tu pedido</a>
-            </div>
-          </div>
-        </article>
-
+      <!-- Contenido existente (sin cambios) -->
+      <div class="container">
+        <h1 class="hero__title">Contacto</h1>
+        <p class="hero__subtitle">
+          Estamos a tu disposición para pedidos, dudas y asesoramiento. Respuesta en menos de 24&nbsp;horas.
+        </p>
+        <div class="hero__actions contact-actions">
+          <a href="tel:+34664345431" class="btn btn--primary">📞 Llamar</a>
+          <a href="mailto:pedidosicorsesierra@gmail.com" class="btn btn--ghost">✉️ Escribir email</a>
+          <a href="#productos" class="btn btn--ghost">Ver productos</a>
+        </div>
       </div>
     </section>
-  </main>
 
 
-  <section class="testimonios">
-    <h2>Lo que dicen nuestros clientes</h2>
-    <div class="testimonio">
-      <p>"Aceite de primera calidad. Lo uso para mis recetas tradicionales y se nota la diferencia." – Ana G.</p>
-    </div>
-    <div class="testimonio">
-      <p>"Excelente trato y entrega rápida. Muy recomendable." – Carlos M.</p>
-    </div>
-  </section>
+    <!-- PRODUCTOS -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Nuestros Aceites</h2>
 
-  <section class="Nuestras recetas preferidas con aceite virgen extra">
-    <h2>Nuestras recetas preferidas con aceite virgen extra</h2>
-    <div class="imagenes-galeria">
-<div class="galeria-item">
-  <img src="img/salmorejo.jpg" alt="Salmorejo Cordobés" data-caption="Una de las recetas con aceite de oliva más famosas de Andalucía es, sin duda, el salmorejo Cordobés. Un plato frío ideal para el verano.
+        <!-- 👇 ancla en el grid para caer directamente en las imágenes -->
+        <div id="productos" class="productos-grid">
 
-Para su elaboración se hace un majado de miga de pan, al que se añaden otros complementos, como tomates, ajos, aceite de oliva y sal. Tiene que alcanzar una consistencia parecida a la del puré de patatas, y se suele servir adornado por encima con diversas guarniciones, como picatostes, trocitos de jamón o yemas de huevo duro ralladas." />
-  <button class="zoom-btn" aria-label="Ampliar imagen">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-    </svg>
-  </button>
-</div>
+          <!-- 2L -->
+          <article class="card card--featured">
+            <div class="card__media">
+              <img class="card__img" src="img/garrafa2.jpg" alt="Aceite de Oliva Virgen Extra 2L" />
+            </div>
+            <div class="card__body">
+              <div class="badge">2L • Virgen Extra</div>
+              <h3 class="card__title">Aceite de Oliva Virgen Extra 2L</h3>
+              <p class="card__desc">Extraído en frío solo por medios mecánicos. Sabor y aroma intensos.</p>
+              <div class="card__actions">
+                <button class="btn btn--ghost ver-mas" aria-expanded="true" aria-controls="extra-2l">Ver más</button>
+                <a class="btn btn--primary" href="contacto.html" aria-label="Realizar pedido 2L">Comprar</a>
+              </div>
+              <div id="extra-2l" class="extra" hidden>
+                <div class="price">13 € / unidad</div>
+                <p class="note">
+                  Disponible por unidades o cajas (8 garrafas). Envíos en 24–48 h.
+                </p>
+              </div>
+            </div>
+          </article>
 
-<div class="galeria-item">
-  <img src="img/ajo.jpg" alt="Ajoatao" data-caption="El ajoatao es una salsa a base de ajo. Se hace una pasta con aceite de oliva y ajo molido, que suele acompañar los huevos y patatas. Con las patatas se hace un puré, que se mezcla con la masa de ajos, previamente machacada en el mortero. Se deja enfriar la masa, para evitar que cuaje, y se echa huevo y, seguidamente, un chorro de zumo de limón o de vinagre" />
-  <button class="zoom-btn" aria-label="Ampliar imagen">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-    </svg>
-  </button>
-</div>
+          <!-- 5L -->
+          <article class="card">
+            <div class="card__media">
+              <img class="card__img" src="img/garrafa3.jpg" alt="Aceite de Oliva Virgen Extra 5L" />
+            </div>
+            <div class="card__body">
+              <div class="badge">5L • Virgen Extra</div>
+              <h3 class="card__title">Aceite de Oliva Virgen Extra 5L</h3>
+              <p class="card__desc">Aroma equilibrado, ideal para ensaladas, guisos, carnes y pescados.</p>
+              <div class="card__actions">
+                <button class="btn btn--ghost ver-mas" aria-expanded="true" aria-controls="extra-5l">Ver más</button>
+                <a class="btn btn--primary" href="contacto.html" aria-label="Realizar pedido 5L">Comprar</a>
+              </div>
+              <div id="extra-5l" class="extra" hidden>
+                <div class="price">31 € / unidad</div>
+                <p class="note">
+                  Disponible por unidades o cajas (3 garrafas). Envíos en 24–48 h.
+                </p>
+              </div>
+            </div>
+          </article>
 
-<div class="galeria-item">
-  <img src="img/pipirrana.jpg" alt="Pipirrana de Jaén" data-caption="Como no puede ser de otra forma, las recetas de Jaén tienen su base en el aceite de oliva. Un ejemplo es la pipirrana, un plato de verano que se hace con los tomates y pimientos de la huerta, huevos y atún, pero su singularidad es el majado que lleva a base de ajos, sal, la yema de huevo cocida y aceite de oliva virgen extra.  Se sirve en un dornillo de madera bien fresquita, hay que dejarla reposar unas horas para que todos los sabores se integren,  se toma con cuchara y no hay que resistirse a mojar pan en el caldo de la pipirrana." />
-  <button class="zoom-btn" aria-label="Ampliar imagen">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-    </svg>
-  </button>
-</div>
-
-<div class="galeria-item">
-  <img src="img/boquerones.jpg" alt="Boquerones en vinagre" data-caption="Otra de las recetas con aceite de oliva son los boquerones en vinagre. Es imprescindible que los boquerones sean bien frescos y que estén limpios y sin espina.
-
-El primer paso es dejarlos durante 15 minutos en agua bien fría. Pasado este tiempo los iremos colocando en una bandeja adecuada, formando capas, que iremos salando, para, seguidamente, rociarlos con una mezcla hecha con un 20% de agua y un 80% de vinagre. Déjalo en esta mezcla entre 8 y 10 horas. Transcurridas estas horas se escurren.
-
-Para terminar, volveremos a ponerlo en capas echando sobre ellas ajo y perejil bien picados, y bañaremos todo el contenido en aceite de oliva." />
-  <button class="zoom-btn" aria-label="Ampliar imagen">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-    </svg>
-  </button>
-</div>
-
-<div class="galeria-item">
-  <img src="img/bacalao.webp" alt="Bacalao al Pil-Pil" data-caption="El bacalao al pilpil es un clásico de la cocina vasca donde el protagonista indiscutible es el aceite de oliva virgen extra. La receta se basa en confitar lentamente los lomos de bacalao en este aceite de gran calidad, junto con ajo laminado y guindilla, hasta que su gelatina natural emulsiona con el aceite, creando una salsa espesa, sedosa y brillante. El resultado es un plato sencillo en ingredientes pero exquisito en sabor, donde el uso del aceite de oliva virgen extra aporta matices frutados y una textura inconfundible que elevan la preparación a un nivel único." />
-  <button class="zoom-btn" aria-label="Ampliar imagen">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-    </svg>
-  </button>
-</div>
-
-<div class="galeria-item">
-  <img src="img/pulpo.webp" alt="Pulpo" data-caption="El arroz con pulpo a la gallega es un plato sabroso y tradicional que combina la ternura del pulpo con la cremosidad del arroz. Se prepara sofriendo cebolla, pimiento y ajo, a los que se añade el pulpo previamente cocido y cortado en rodajas. Luego se incorpora el arroz y se cocina con caldo del propio pulpo o de pescado, obteniendo un sabor intenso del mar. Se sazona con pimentón, aceite de oliva y sal gruesa al estilo gallego, logrando un plato reconfortante y lleno de carácter." />
-  <button class="zoom-btn" aria-label="Ampliar imagen">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M10 2a8 8 0 105.29 14.29l4.71 4.7a1 1 0 001.41-1.41l-4.7-4.71A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
-    </svg>
-  </button>
-</div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2>¿Dónde estamos?</h2>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.056127488645!2d-4.1326840980332955!3d40.584516483385805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd410a409cd339d3%3A0x4ddc961b444b3193!2sC.%20Alfol%C3%AD%2C%209%2C%2028280%20El%20Escorial%2C%20Madrid!5e0!3m2!1ses!2ses!4v1746093333934!5m2!1ses!2ses"
-      width="100%" height="300" style="border:0;" allowfullscreen loading="lazy">
-    </iframe>
-  </section>
-
-  <section class="faq">
-    <h2>❓ Preguntas Frecuentes</h2>
-
-    <details>
-      <summary>¿Qué métodos de pago aceptan?</summary>
-      <p>Aceptamos transferencia bancaria, Bizum o pago en efectivo. Una vez confirmas tu pedido, te enviaremos los datos para el
-        pago.</p>
-    </details>
-
-    <details>
-      <summary>¿Cuánto tarda el envío?</summary>
-      <p>El tiempo estimado de entrega es de 24 horas hábiles desde la confirmación del pago.</p>
-    </details>
-
-    <details>
-      <summary>¿Puedo hacer un pedido personalizado?</summary>
-      <p>Sí. Puedes escribirnos por correo o WhatsApp indicando tus preferencias y cantidades, y te prepararemos una
-        propuesta personalizada.</p>
-    </details>
-
-    <details>
-      <summary>¿Donde realizan los pedidos?</summary>
-      <p>Por el momento solo realizamos envíos sin coste adicional en todo la zona de la Sierra Noroeste de Madrid. El Escorial y alrededores
-      </p>
-    </details>
-  </section>
-
-  <section class="ventajas">
-    <h2>🌿 ¿Por qué elegir nuestros aceites?</h2>
-    <div class="ventaja-grid">
-      <div>
-        <h3>🌱 100% Natural y sostenible</h3>
-        <p>Sin aditivos ni químicos. Prensado en frío y responsables con el medio ambiente.</p>
+        </div>
       </div>
-      <div>
-        <h3>🌍 Mejores precios</h3>
-        <p>Somos capaces de ofrecer un aceite de alta calidad con los mejores precios del mercado.</p>
+    </section>
+
+
+    <!-- MAPA -->
+    <section>
+      <h2>¿Dónde estamos?</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.056127488645!2d-4.1326840980332955!3d40.584516483385805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd410a409cd339d3%3A0x4ddc961b444b3193!2sC.%20Alfol%C3%AD%2C%209%2C%2028280%20El%20Escorial%2C%20Madrid!5e0!3m2!1ses!2ses!4v1746093333934!5m2!1ses!2ses"
+        width="100%" height="300" style="border:0;" allowfullscreen loading="lazy">
+      </iframe>
+    </section>
+
+
+
+    <!-- Colaboradores -->
+    <section class="colaboradores">
+      <h2>🤝 Nuestros Colaboradores</h2>
+      <div class="logo-grid">
+        <img src="https://www.cooperativalacarrera.com/wp-content/uploads/2023/08/logo2-1.png"
+          alt="Calidad Certificada" />
+        <img src="https://www.cooperativalacarrera.com/wp-content/uploads/2023/08/logo-la-carrera.png"
+          alt="Aceites La Carrera" />
       </div>
-      <div>
-        <h3>📦 Entrega rápida y gratuita</h3>
-        <p>Pedidos procesados y entregados en las primeras 24 horas sin coste adicional. Envios completamente gratuitos.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="sabias">
-    <h2>🧠 ¿Sabías que...?</h2>
-    <ul>
-      <li>El aceite de oliva virgen extra tiene polifenoles que actúan como antioxidantes naturales.</li>
-      <li>El prensado en frío conserva mejor el sabor y propiedades que los métodos industriales.</li>
-      <li>El aceite de coco es excelente para la piel seca y el cabello dañado.</li>
-    </ul>
-  </section>
-
-
-  <section class="colaboradores">
-    <h2>🤝 Nuestros Colaboradores</h2>
-    <div class="logo-grid">
-      <img src="https://www.cooperativalacarrera.com/wp-content/uploads/2023/08/logo2-1.png"
-        alt="Calidad Certificada" />
-      <img src="https://www.cooperativalacarrera.com/wp-content/uploads/2023/08/logo-la-carrera.png"
-        alt="Aceites La Carrera" />
-    </div>
-  </section>
-
+    <!-- Sobre (ancla del menú) -->
+    <section id="sobre" aria-label="Sobre nosotros" class="section" hidden></section>
   </main>
 
   <footer>
     <div class="footer-info">
-      <p>&copy; 2025 Tienda de Aceite Virgen Extra. Calidad certificada</p>
+      <p>&copy; <span id="y"></span> Tienda de Aceite Virgen Extra. Calidad certificada</p>
       <p>Email: pedidosicorsesierra@gmail.com</p>
       <p>Síguenos:
-        <a href="#">Instagram</a> |
-        <a href="#">Facebook</a>
+        <a href="#" rel="nofollow noopener">Instagram</a> |
+        <a href="#" rel="nofollow noopener">Facebook</a>
       </p>
     </div>
   </footer>
 
-  <!-- 🔍 Lightbox -->
-<!-- 🔍 Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <div class="lightbox-content">
-    <img class="lightbox-img" src="" alt="Imagen ampliada">
-    <p class="caption"></p>
-  </div>
-</div>
-
-
-  <!-- 🔍 Script de la lupa -->
-  <script>
-    const zoomButtons = document.querySelectorAll('.zoom-btn');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.querySelector('.lightbox-img');
-    const lightboxCaption = document.querySelector('.caption');
-    const closeBtn = document.querySelector('.close');
-
-    zoomButtons.forEach(btn => {
-      btn.addEventListener('click', e => {
-        const card = e.currentTarget.parentElement; // la "cara trasera"
-        const img = card.querySelector("img");      // busca la imagen dentro
-        lightbox.style.display = "flex";
-        lightboxImg.src = img.src;
-        lightboxCaption.textContent = img.getAttribute("data-caption") || img.alt || "";
-      });
-    });
-
-
-    closeBtn.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) {
-        lightbox.style.display = 'none';
-      }
-    });
-  </script>
-
-  <script>
-  const cookieBanner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('accept-cookies');
-
-  // Comprueba si ya aceptó cookies
-  if (!localStorage.getItem('cookiesAccepted')) {
-    cookieBanner.style.display = 'block';
-  }
-
-  acceptBtn.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieBanner.style.display = 'none';
-  });
-</script>
-
-<script>
-  const modalLegal = document.getElementById('modal-legal');
-  const closeLegal = document.querySelector('.close-legal');
-
-  // Abrir el modal al cargar la web o al hacer clic en enlace del banner
-  document.querySelectorAll('#cookie-banner a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault(); // evita abrir otra página
-      modalLegal.style.display = 'flex';
-    });
-  });
-
-  // Cerrar el modal
-  closeLegal.addEventListener('click', () => {
-    modalLegal.style.display = 'none';
-  });
-
-  // Cerrar al hacer clic fuera del contenido
-  modalLegal.addEventListener('click', e => {
-    if(e.target === modalLegal) {
-      modalLegal.style.display = 'none';
-    }
-  });
-</script>
-
+  <script src="js/app.js" defer></script>
 </body>
 
-
 </html>
-
-
-
-
-

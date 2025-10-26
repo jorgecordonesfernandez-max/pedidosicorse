@@ -3,47 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contacto</title>
+  <title>Contacto — Aceites Icorse Sierra</title>
+
+  <!-- Fuentes + estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- CSP estricta (actualizada con media-src para vídeos locales) -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' https://fonts.googleapis.com;
+    img-src 'self' https://www.cooperativalacarrera.com data:;
+    font-src https://fonts.gstatic.com;
+    frame-src https://www.google.com https://maps.google.com;
+    media-src 'self';
+    connect-src 'self';
+    object-src 'none';
+    base-uri 'none';
+    form-action 'self';
+    frame-ancestors 'self';
+    upgrade-insecure-requests;
+  ">
 </head>
+
 <body>
-  <header>
-    <h1>Contacto</h1>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="informacion.html">Información</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container container">
+      <div class="brand">
+        <img src="img/olivar.jpg" alt="Logo Aceites Icorse Sierra" class="brand-logo">
+        <span class="brand-name">Aceites Icorse Sierra</span>
+      </div>
+      <nav class="nav" aria-label="Principal">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="index.html#productos">Productos</a>
+        <a class="is-active" href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="seccion-info">
-    <section class="info-bloque">
-      <h2>📞 Información de contacto</h2>
-      <p><strong>Teléfono:</strong> +34 664345431</p>
-      <p><strong>Correo electrónico:</strong> pedidosicorsesierra@gmail.com</p>
-      <a href="mailto:pedidosicorsesierra@gmail.com" class="boton-flotante">📩 Escríbenos</a>
-      <p><strong>Dirección:</strong> C. Alfolí, 9, 28280 El Escorial, Madrid</p>
-      <p><strong>Horario de atención:</strong> Lunes a Viernes, 09:00 - 18:00</p>
+  <main>
+    <!-- Hero con vídeo de fondo -->
+    <section class="hero hero--compact hero--contact">
+      <!-- 🎥 Video de fondo -->
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+             poster="img/hero-poster.jpg" aria-hidden="true">
+        <source src="media/hero.webm" type="video/webm" />
+        <source src="media/olivar.mp4" type="video/mp4" />
+        <!-- Fallback: si no se soporta vídeo, se mostrará el poster -->
+      </video>
+
+      <!-- Capa de oscurecimiento para contraste -->
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="container hero__container">
+        <div class="stack">
+          <h1 class="hero__title">Contacto</h1>
+          <p class="hero__subtitle">Respuesta &lt; 24&nbsp;h · Pago seguro · Envío 24–48&nbsp;h</p>
+          <div class="hero__actions contact-actions">
+            <a href="tel:+34664345431" class="btn btn--lg btn--primary">📞 Llamar</a>
+            <a href="mailto:pedidosicorsesierra@gmail.com" class="btn btn--lg btn--ghost">✉️ Email</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="info-bloque">
-      <h2>🛒 Cómo hacer un pedido</h2>
-      <ol>
-        <li>Revisa las diferentes opciones de tamaño de garrafa en la página de inicio.</li>
-        <li>Escríbenos al correo indicando los productos deseados, cantidad y dirección de entrega.</li>
-        <li>Te responderemos en menos de 24h con la confirmación y método de pago (Bizum, transferencia o pago en efectivo).</li>
-        <li>Una vez confirmado el pago, el pedido se prepara y se envía en un plazo de 48h.</li>
-      </ol>
+    <!-- Dos tarjetas: Contactar / Envíos -->
+    <section class="section">
+      <div class="container cards-2">
+        <!-- Contactar -->
+        <article class="card card--tight">
+          <header class="card__head">
+            <h2 class="card__title">Habla con nosotros</h2>
+          </header>
+          <ul class="kv kv--compact">
+            <li><span>Teléfono</span><a href="tel:+34664345431">+34 664 345 431</a></li>
+            <li><span>Email</span><a href="mailto:pedidosicorsesierra@gmail.com">pedidosicorsesierra@gmail.com</a></li>
+            <li><span>Horario</span><span>L–V · 09:00–18:00</span></li>
+          </ul>
+          <div class="row gap-s">
+            <a class="btn btn--primary" href="mailto:pedidosicorsesierra@gmail.com?subject=Pedido%20de%20aceite">Iniciar pedido</a>
+            <a class="btn btn--ghost" href="index.html#productos">Ver productos</a>
+          </div>
+        </article>
+
+        <!-- Envíos -->
+        <article class="card card--tight">
+          <header class="card__head">
+            <h2 class="card__title">Envíos</h2>
+          </header>
+          <ul class="bullets">
+            <li>Gratis en Sierra Noroeste (El Escorial y alrededores)</li>
+            <li>Entrega 24–48&nbsp;h tras confirmación</li>
+            <li>Incidencias: avísanos en 24&nbsp;h</li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip">24–48&nbsp;h</span>
+            <span class="chip">Sin coste local</span>
+            <span class="chip">Soporte</span>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="info-bloque">
-      <h2>📦 Envíos y devoluciones</h2>
-      <p>Hacemos envíos a toda la zona de la sierra Noroeste de Madrid. El envio es gratuito.</p>
+    <!-- Mapa -->
+    <section class="section">
+      <div class="container">
+        <article class="card card--map">
+          <header class="card__head">
+            <h2 class="card__title">¿Dónde estamos?</h2>
+          </header>
+          <div class="card__media">
+            <iframe
+              title="Ubicación Aceites Icorse Sierra"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.056127488645!2d-4.1326840980332955!3d40.584516483385805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd410a409cd339d3%3A0x4ddc961b444b3193!2sC.%20Alfol%C3%AD%2C%209%2C%2028280%20El%20Escorial%2C%20Madrid!5e0!3m2!1ses!2ses!4v1746093333934!5m2!1ses!2ses"
+              width="100%" height="380" style="border:0;"
+              loading="lazy" allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+            </iframe>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Tienda De Aceite Virgen Extra. Calidad certificada</p>
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p>&copy; <span id="y"></span> Aceites Icorse Sierra</p>
+      <nav class="footer-nav" aria-label="Secundaria">
+        <a href="index.html#productos">Productos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
   </footer>
+
+  <!-- JS global -->
+  <script src="js/app.js" defer></script>
 </body>
 </html>
